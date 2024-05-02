@@ -1,6 +1,6 @@
 import datetime
 
-from libs_extrn.bottle import Bottle, template
+from bottle import Bottle, template
 
 from libs.debug import GLOBAL_DEBUG
 import libs.content.post as postManager
