@@ -1,4 +1,4 @@
-import libs_extrn.bottle as bottle
+import bottle
 from libs.bottlePlugins.bottle_session import Session
 from libs.ramdb import RAM_DABASE
 import os
