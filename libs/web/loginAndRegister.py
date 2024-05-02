@@ -4,7 +4,7 @@ import os
 import hashlib
 import html
 
-from libs_extrn.bottle import Bottle, redirect, view, request, template
+from bottle import Bottle, redirect, view, request, template
 
 from libs.database.DB_controler import create_connection, execute_sql_statment
 
@@ -90,7 +90,7 @@ if not os.path.isfile(configuration.db_users_path):
     print(f"Please open in browser {_i_p_}:{_p_o_r_t_} and create a user.")
     print("After this restart the application")
     
-    from libs_extrn.bottle import Bottle, route, run, redirect
+    from bottle import Bottle, route, run, redirect
     run(app, host = _i_p_, port = _p_o_r_t_, debug=True)
     exit()
         
