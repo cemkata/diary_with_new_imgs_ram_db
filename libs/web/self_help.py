@@ -1,4 +1,4 @@
-from libs_extrn.bottle import Bottle, run, static_file, template, request
+from bottle import Bottle, run, static_file, template, request
 import datetime
 import json
 import html
