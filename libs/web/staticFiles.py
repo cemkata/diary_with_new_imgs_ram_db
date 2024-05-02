@@ -1,4 +1,4 @@
-from libs_extrn.bottle import Bottle, static_file
+from bottle import Bottle, static_file
 
 app = Bottle()
 
