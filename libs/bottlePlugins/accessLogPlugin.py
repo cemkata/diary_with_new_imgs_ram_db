@@ -8,7 +8,7 @@ import logging
 import logging.handlers
 import os
 import inspect
-import libs_extrn.bottle as bottle
+import bottle as bottle
 
 class Logger:
     name = 'logger'
