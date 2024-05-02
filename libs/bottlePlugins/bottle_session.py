@@ -28,9 +28,9 @@ except ImportError:
         import libs.database.redisFileClone as redis
 
 import inspect
-from libs_extrn.bottle import PluginError
-from libs_extrn.bottle import request
-from libs_extrn.bottle import response
+from bottle import PluginError
+from bottle import request
+from bottle import response
 import uuid
 
 __version__ = '1.0'
