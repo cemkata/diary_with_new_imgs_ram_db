@@ -1,7 +1,7 @@
 import os
 import random
 
-from libs_extrn.bottle import Bottle, HTTPError, static_file
+from bottle import Bottle, HTTPError, static_file
 from libs.debug import GLOBAL_DEBUG
 
 app = Bottle()
