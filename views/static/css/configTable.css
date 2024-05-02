@@ -1,0 +1,54 @@
+@import "stylesheet.css";
+@import "tabs.css";
+
+.iframeClass{
+	height:66vh;
+	width:100%;
+}
+
+.hidden_post{
+	background:#c5ed77;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+.table td {
+  padding: 7px 10px;
+  border: 1px solid;
+}
+
+@media screen and (max-width: 600px) {  
+  .responsive thead {
+    visibility: hidden;
+    height: 0;
+    position: absolute;
+  }
+  
+  .responsive tr {
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  .responsive td {
+    border: 1px solid;
+    border-bottom: none;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  .responsive td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .responsive td:last-child {
+    border-bottom: 1px solid;
+  }
+}

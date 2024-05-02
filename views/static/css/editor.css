@@ -1,0 +1,133 @@
+@import "stylesheet.css";
+@import "tabs.css";
+
+#title {
+  width: 99%;
+  /*background-color: blueviolet;*/
+}
+
+#area{
+  width: 99%;
+}
+
+#files tr, td{
+	background-color: rgba(0,0,0,.01);
+	border: 1px solid rgba(0,0,0,.03);
+	border-spacing: 0px;
+	
+}
+#files table{
+	border-collapse: collapse;
+}
+
+
+@media (min-width:768px) {
+  .responsive thead {
+    visibility: hidden;
+    height: 0;
+    position: absolute;
+  }
+  
+  .responsive tr {
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  .responsive td {
+    border: 1px solid;
+    border-bottom: none;
+    display: block;
+    font-size: .8em;
+  }
+  
+  .responsive button {
+    display: block;
+    font-size: .8em;
+	width: 100%;
+  }
+  
+  .responsive a {
+    display: block;
+	width: 100%;
+  }
+  
+  .responsive td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .responsive td:last-child {
+    border-bottom: 1px solid;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+.table td {
+  padding: 7px 10px;
+}
+
+@media screen and (max-width: 600px) {  
+  .responsive thead {
+    visibility: hidden;
+    height: 0;
+    position: absolute;
+  }
+  
+  .responsive tr {
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  .responsive td {
+    border: 1px solid;
+    border-bottom: none;
+    display: block;
+    font-size: .8em;
+  }
+  
+  .responsive button {
+    display: block;
+    font-size: .8em;
+	width: 100%;
+  }
+  
+  .responsive a {
+    display: block;
+	width: 100%;
+  }
+  
+  .responsive td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .responsive td:last-child {
+    border-bottom: 1px solid;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+.table td {
+  padding: 7px 10px;
+}
+
+#feelings button {
+    display: block;
+    font-size: .8em;
+    width: 100%;
+    /*background-color: rgba(0,0,0,.1);*/
+  }

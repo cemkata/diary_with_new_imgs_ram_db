@@ -1,0 +1,7 @@
+@import "tree.css";
+
+main img {
+  border: 5px solid darkblue;
+  max-width:90%;
+  max-height:90%;
+}

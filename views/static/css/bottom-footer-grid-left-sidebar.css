@@ -1,0 +1,64 @@
+/*https://matthewjamestaylor.com/holy-grail-layout#flexbox*/
+
+body {
+    margin:0;
+    padding:0;
+    font-size:100%;
+}
+
+/* left sidebar 2-column layout */
+/* grid container */
+.left-sidebar-bottom-footer-grid {
+    display:grid;
+    grid-template-rows:auto 1fr auto auto;
+    grid-template-areas:
+        'header'
+        'main-content'
+        'left-sidebar'
+        'footer';
+
+    /* fallback height */
+    min-height:100vh;
+
+    /* new small viewport height for modern browsers */
+    min-height:100svh;
+}
+
+/* general column padding */
+.left-sidebar-bottom-footer-grid > * {
+    padding:1rem;
+}
+
+/* assign columns to grid areas */
+.left-sidebar-bottom-footer-grid > .header {
+    grid-area:header;
+    background:#f97171;
+}
+.left-sidebar-bottom-footer-grid > .main-content {
+    grid-area:main-content;
+    background:#fff;
+}
+.left-sidebar-bottom-footer-grid > .left-sidebar {
+    grid-area:left-sidebar;
+    background:#f5d55f;
+}
+.left-sidebar-bottom-footer-grid > .right-sidebar {
+    grid-area:right-sidebar;
+    background:#c5ed77;
+}
+.left-sidebar-bottom-footer-grid > .footer {
+    grid-area:footer;
+    background:#72c2f1;
+}
+
+/* tablet breakpoint */
+@media (min-width:768px) {
+    .left-sidebar-bottom-footer-grid {
+        grid-template-columns:repeat(3, 1fr);
+        grid-template-rows:auto 1fr auto;
+        grid-template-areas:
+            'header header header'
+            'left-sidebar main-content main-content'
+            'footer footer footer';
+    }
+}
