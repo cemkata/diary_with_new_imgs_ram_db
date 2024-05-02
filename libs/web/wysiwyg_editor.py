@@ -6,7 +6,7 @@ import html
 import sys
 import datetime
 
-from libs_extrn.bottle import Bottle, request, template, HTTPError, static_file, redirect
+from bottle import Bottle, request, template, HTTPError, static_file, redirect
 from libs.debug import GLOBAL_DEBUG
 import libs.content.post as postManager
 import libs.web.self_help as self_help
