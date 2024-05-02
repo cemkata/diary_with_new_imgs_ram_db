@@ -1,6 +1,6 @@
 import html
 
-from libs_extrn.bottle import Bottle, HTTPError, static_file
+from bottle import Bottle, HTTPError, static_file
 from libs.debug import GLOBAL_DEBUG
 import libs.content.post as postManager
 
