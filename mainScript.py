@@ -19,7 +19,7 @@ import libs.web.blog_files as blog_files
 import libs.web.getWelcomeImg as getWelcomeImg
 import libs.web.admin as admin
 import libs.web.loginAndRegister as loginAndRegister
-from libs_extrn.bottle import Bottle, BaseRequest, route, run, redirect, ServerAdapter
+from bottle import Bottle, BaseRequest, route, run, redirect, ServerAdapter
 
 #Sessions plugin
 import libs.bottlePlugins.bottle_session_middleware as sessionsPlugin
@@ -29,8 +29,8 @@ class MyWSGIRefServer(ServerAdapter):
     server = None
 
     def run(self, handler):
-        from libs_extrn.paste import httpserver
-        from libs_extrn.paste.translogger import TransLogger
+        from paste import httpserver
+        from paste.translogger import TransLogger
         handler = TransLogger(handler, setup_console_handler=(not self.quiet))
         httpserver.serve(handler,
                          host=self.host,
@@ -104,7 +104,7 @@ else:
 
 print(f"Starting {projectName} - version {ver}")
 if config.log2File:
-    from libs_extrn.tee import StdoutTee, StderrTee
+    from tee import StdoutTee, StderrTee
     print(f"{config.access_log=}")
     print(f"{config.app_log=}")
     with StdoutTee(config.app_log), StderrTee(config.access_log):
