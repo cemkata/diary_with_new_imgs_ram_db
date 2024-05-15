@@ -1,8 +1,9 @@
+Digital diary + table to shedule and monitor your day. All writen in python.
 Needs:
 bottle, tee, paste
 
 Or after cloning the repo just run `pip install -r requirements.txt`.
-
+Start with `pyton3 mainScript.py`
 
 How to configure in config_files\config.ini  
 - ***In DEFAULT section:***
@@ -29,3 +30,13 @@ How to configure in config_files\config.ini
   - to enable the ram db create empty file RAM_DB in the config_files folder
 
   How to configure in config_files\config.ini  
+
+How to configure in config_files\config.json
+- dateFormat - allow to change the date format, support all standart date string formating
+- weekdayes - allow localisation of the day strings show on the page
+- MAX_DAYS - how many days before and after today will be shown
+- FILL_IN_THE_PAST - allow to input data for dates even before the instalation date. If the whole line ", "FILL_IN_THE_PAST":1" is removed you can not fill data for dates older then the fist start. You can ignor it. 
+- MAX_CAT_ROWS - how many rows have each category
+- MAX_CATEGORIES - How many categories will be avalable to fill
+- translation_gui, translation_edit, place_holder_edit_post, translation_blog_editor - allow localisation of the strings
+- footer - define some foter text supports all html code
