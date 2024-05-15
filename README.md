@@ -1,11 +1,9 @@
 # TODO
 
 Needs:
-bottle
-tee
-paste
+bottle, tee, paste
 
-How to configure in config.ini  
+How to configure in config_files\config.ini  
 - ***In DEFAULT section:***
 - port - Port where the webserver will listen
 - ip - Address where ther server will listen. 0.0.0.0 will listen on any v4 IP.
@@ -27,5 +25,6 @@ How to configure in config.ini
 - session_server = 127.0.0.1 - used only with RAM_DB
 - port = 65432 - used only with RAM_DB
   - this values are used when a ram db are used
-  - to enable the ram db create empty file RAM_DB in the same folder as mainScript
-  
+  - to enable the ram db create empty file RAM_DB in the config_files folder
+
+  How to configure in config_files\config.ini  
