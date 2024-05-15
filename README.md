@@ -5,7 +5,7 @@ bottle, tee, paste
 Or after cloning the repo just run `pip install -r requirements.txt`.
 Start with `pyton3 mainScript.py`
 
-How to configure in config_files\config.ini  
+How to configure in `config_files\config.ini` 
 - ***In DEFAULT section:***
 - port - Port where the webserver will listen
 - ip - Address where ther server will listen. 0.0.0.0 will listen on any v4 IP.
@@ -29,7 +29,7 @@ How to configure in config_files\config.ini
   - this values are used when a ram db are used
   - to enable the ram db create empty file RAM_DB in the config_files folder
 
-How to configure in config_files\config.json
+How to configure in `config_files\config.json`
 - dateFormat - allow to change the date format, support all standart date string formating
 - weekdayes - allow localisation of the day strings show on the page
 - MAX_DAYS - how many days before and after today will be shown
