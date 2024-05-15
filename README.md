@@ -38,3 +38,5 @@ How to configure in `config_files\config.json`
 - MAX_CATEGORIES - How many categories will be avalable to fill
 - translation_gui, translation_edit, place_holder_edit_post, translation_blog_editor - allow localisation of the strings
 - footer - define some foter text supports all html code
+
+**On first start you will be asked to open the page in browser to add user. After this stop the app `ctrl+c` and start again.**
