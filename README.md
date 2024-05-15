@@ -29,8 +29,6 @@ How to configure in config_files\config.ini
   - this values are used when a ram db are used
   - to enable the ram db create empty file RAM_DB in the config_files folder
 
-  How to configure in config_files\config.ini  
-
 How to configure in config_files\config.json
 - dateFormat - allow to change the date format, support all standart date string formating
 - weekdayes - allow localisation of the day strings show on the page
