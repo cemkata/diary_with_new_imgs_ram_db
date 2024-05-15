@@ -26,6 +26,6 @@ How to configure in config.ini
 - sessions_length - maximum cookie limit for sessions is seconds
 - session_server = 127.0.0.1 - used only with RAM_DB
 - port = 65432 - used only with RAM_DB
-   ; this values are used when a ram db are used
-   ; to enable the ram db create empty file RAM_DB in the same folder as mainScript
+-- this values are used when a ram db are used
+-- to enable the ram db create empty file RAM_DB in the same folder as mainScript
   
