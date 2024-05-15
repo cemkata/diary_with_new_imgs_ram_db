@@ -1,7 +1,7 @@
-# TODO
-
 Needs:
 bottle, tee, paste
+Or after cloning the repo just run `pip install -r requirements.txt`.
+
 
 How to configure in config_files\config.ini  
 - ***In DEFAULT section:***
