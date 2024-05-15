@@ -1,12 +1,8 @@
 better -- views\static\css\blog.css
 Maybe better login/register form -- now is used w3.css
 
-[Cancled/Droped]  Change all sql queryes to pseudoSql, maybe I will drop this. Reverted all sql back to sql strings.
-
 Describe how to configure
 
-user/pass
-angelsg/trabant
 
 Hard coded values for folders:
  - db_schemas
