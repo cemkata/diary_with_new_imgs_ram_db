@@ -1,0 +1,17 @@
+better -- views\static\css\blog.css
+Maybe better login/register form -- now is used w3.css
+
+Describe how to configure
+
+
+Hard coded values for folders:
+ - db_schemas
+ - config_files
+
+
+{Bugs}
+^^^^^^
+When reloading the admin panel several times the sporadic logoff (sessions get lost) or the page show 500 error.
+Because the page uses 3 iframes and loading them causes race conditions with the redisfileclone. If using ram db, not sure.
+Added retry mechanism and works beter, but still every now and then the session gets lost, usualy after several rapid refreshes of the page.
+Maybe becasue moved to paste web server
