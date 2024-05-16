@@ -11,15 +11,6 @@ from libs.database.ram_db.libclient import Client
 
 from libs.debug import GLOBAL_DEBUG
 
-dbFileName = "sessions.db"
-libserver.sql.sleepingTime = 3600
-
-config = configer.init(SILENT = False)
-libserver.sql.sessions_file = os.path.join(config.sessionsFolder, dbFileName)
-libserver.sql.init()
-
-sel = selectors.DefaultSelector()
-
 def accept_wrapper(sock):
     conn, addr = sock.accept()  # Should be ready to read
     if GLOBAL_DEBUG:
@@ -28,15 +19,34 @@ def accept_wrapper(sock):
     message = libserver.Message(sel, conn, addr)
     sel.register(conn, selectors.EVENT_READ, data=message)
 
+config = configer.init(SILENT = False)
 
 try:
     #test if other server is already listening
     action = 'get_all'
     values = ["login_true"]
+    values = ["session_id", "expire"]
     sender = Client(config.session_server, config.session_port)
-    sessions = sender.sendMessege(action, values, ignoreError = True)
+    if GLOBAL_DEBUG:
+        print("sender = Client(config.session_server, config.session_port)")
+    sender.sendMessege(action, values, ignoreError = True)
+    if GLOBAL_DEBUG:
+        print("sender.sendMessege(action, values, ignoreError = True)")
+    sessions = sender.readResult()
+    if GLOBAL_DEBUG:
+        print("sessions = sender.readResult()")
+        print(f'{sessions=}')
     exit()
+#except SystemExit:
+#    print("sys.exit() worked as expected")
+#    del sender
 except OSError:
+    dbFileName = "sessions.db"
+    libserver.sql.sleepingTime = 3600
+    libserver.sql.sessions_file = os.path.join(config.sessionsFolder, dbFileName)
+    libserver.sql.init()
+    sel = selectors.DefaultSelector()
+    
     lsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     # Avoid bind() exception: OSError: [Errno 48] Address already in use
     lsock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
