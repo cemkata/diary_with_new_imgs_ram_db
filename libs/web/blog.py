@@ -1,6 +1,6 @@
 import datetime
 
-from bottle import Bottle, template
+from libs_extrn.bottle import Bottle, template
 
 from libs.debug import GLOBAL_DEBUG
 import libs.content.post as postManager
@@ -50,9 +50,7 @@ def show_post(day, month, year):
         assert isinstance(day, int)
         assert isinstance(month, int)
         assert isinstance(year, int)
-
         tree = genTree()
-        
         pManager = postManager.postManager(day = day, month = month, year = year, loadFromDB = True)
         tableContent = pManager.getFeelings()
         postTableContent = template('blog_feelings_table', tableContent = tableContent)
@@ -95,7 +93,7 @@ def genTree():
             continue
         for m in months:
             tmpMonth = {}
-            tmpMonth['mountName'] = m[0]
+            tmpMonth['mountName'] = f'''{configuration.MONTH_NAMES[m[0]]} ({m[0] + 1})'''
             # sqlQueryObject = {}
             # sqlQueryObject['command'] = psevdoSQL.SELECT
             # sqlQueryObject['fileds'] = ['`day`']
