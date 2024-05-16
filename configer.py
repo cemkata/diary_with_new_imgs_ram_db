@@ -107,17 +107,25 @@ class __Configer:
             self._BLOG_TXT = data['translation_blog_editor']
             self._FOOTER = data['footer']
             try:
-               _ = data['FILL_IN_THE_PAST']
-               self._FILL_IN_THE_PAST = False
+                if int(data['FILL_IN_THE_PAST']) == 1:
+                    self._FILL_IN_THE_PAST = False
+                else:
+                    self._FILL_IN_THE_PAST = True
             except KeyError:
                self._FILL_IN_THE_PAST = True
-
+            
+            self._MONTH_NAMES = data['monthsnames']
+            if(len(self._MONTH_NAMES) != 12):
+                if SILENT:
+                    print("Error in translation. Section - monthsnames")
+                exit()
             # Closing file
             f.close()
         else:
             self._MAX_CAT_ROWS = 10
             self._MAX_CATEGORIES = 7
             self._WEEK_DAYS = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+            self._MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
             self._DATE_STR_FORMATER = "%d/%m/%Y"
             self._DAYS = 3
             self._TABLE_TXT_GUI = ["Calender table", "DATE", "Day", "There was a problem saving the data.", "No more days avalable."]
@@ -168,6 +176,9 @@ class __Configer:
     @property
     def WEEK_DAYS(self):
         return self._WEEK_DAYS
+    @property
+    def MONTH_NAMES(self):
+        return self._MONTH_NAMES
     @property
     def DATE_STR_FORMATER(self):
         return self._DATE_STR_FORMATER
