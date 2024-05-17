@@ -1,7 +1,7 @@
 ###!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-ver = 3.04
+ver = 3.05
 projectName = "myDigital diary"
 
 import os
@@ -19,7 +19,7 @@ import libs.web.blog_files as blog_files
 import libs.web.getWelcomeImg as getWelcomeImg
 import libs.web.admin as admin
 import libs.web.loginAndRegister as loginAndRegister
-from bottle import Bottle, BaseRequest, route, run, redirect, ServerAdapter
+from libs_extrn.bottle import Bottle, BaseRequest, route, run, redirect, ServerAdapter
 
 #Sessions plugin
 import libs.bottlePlugins.bottle_session_middleware as sessionsPlugin
@@ -29,8 +29,8 @@ class MyWSGIRefServer(ServerAdapter):
     server = None
 
     def run(self, handler):
-        from paste import httpserver
-        from paste.translogger import TransLogger
+        from libs_extrn.paste import httpserver
+        from libs_extrn.paste.translogger import TransLogger
         handler = TransLogger(handler, setup_console_handler=(not self.quiet))
         httpserver.serve(handler,
                          host=self.host,
@@ -91,20 +91,20 @@ ps = os.getpid()
 
 if sys.platform == 'win32':
     if RAM_DABASE:
-        subprocess.Popen(["python","ram_DB_Server.py",str(ps)])
-        subprocess.Popen(["python","ram_DB_SessionHandler.py",str(ps)])
+        subprocess.Popen(["python","ram_DB_Server.py",str(ps)], creationflags = subprocess.CREATE_NO_WINDOW)
+        subprocess.Popen(["python","ram_DB_SessionHandler.py",str(ps)], creationflags = subprocess.CREATE_NO_WINDOW)
     else:
-        subprocess.Popen(["python","sessionFilesHandler.py",str(ps)])
+        subprocess.Popen(["python","sessionFilesHandler.py",str(ps)], shell=True)
 else:
     if RAM_DABASE:
-        subprocess.Popen(["python3","ram_DB_Server.py",str(ps)])
-        subprocess.Popen(["python3","ram_DB_SessionHandler.py",str(ps)])
+        subprocess.Popen(["python3","ram_DB_Server.py",str(ps)], shell=True)
+        subprocess.Popen(["python3","ram_DB_SessionHandler.py",str(ps)], shell=True)
     else:
-        subprocess.Popen(["python3","sessionFilesHandler.py",str(ps)])
+        subprocess.Popen(["python3","sessionFilesHandler.py",str(ps)], shell=True)
 
 print(f"Starting {projectName} - version {ver}")
 if config.log2File:
-    from tee import StdoutTee, StderrTee
+    from libs_extrn.tee import StdoutTee, StderrTee
     print(f"{config.access_log=}")
     print(f"{config.app_log=}")
     with StdoutTee(config.app_log), StderrTee(config.access_log):

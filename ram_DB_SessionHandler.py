@@ -8,7 +8,7 @@ import configer
 
 from libs.database.ram_db.libclient import Client
 
-ver = 0.4
+ver = 0.5
 
 def check_pid_win(pid:int) -> bool:        
     stdoutdata = subprocess.getoutput("tasklist | findstr " + str(pid))
@@ -76,12 +76,14 @@ def mainfunc() -> None:
     for p in args:
         pids.append(int(p))
 
-    while check_processes(pids):
-        ##print("[debug] sub-process working")
-        ##print(f"folder {sessionsPath}")
-        checkSessions(session_server, session_port, cookie_lifetime)
-        time.sleep(5 * 60) # in seconds - 5*60 very 5 minutes
-    exit()
+    try:
+        while check_processes(pids):
+            ##print("[debug] sub-process working")
+            ##print(f"folder {sessionsPath}")
+            checkSessions(session_server, session_port, cookie_lifetime)
+            time.sleep(5 * 60) # in seconds - 5*60 very 5 minutes
+    except KeyboardInterrupt:
+        pass
 
 if __name__ == "__main__":
    mainfunc()
