@@ -11,9 +11,10 @@
 	  <li class="section">
 		<input type="radio" name="group_{{t['year']}}" id="group{{t['year']}}-{{m['mountName']}}">
 		<label for="group{{t['year']}}-{{m['mountName']}}">{{m['mountName']}}</label>
+		<!-- <label for="group{{t['year']}}-{{m['mountName']}}">{{m['mountName']}} ({{m['mountNumber']}})</label> -->
 		<ul>
 		%for d in m['days']:
-		  <li><a href="/diary/{{d[0]}}/{{m['mountName']}}/{{t['year']}}">{{d[0]}} | <span style="color: black;">{{d[1]}}</span></a></li>
+		  <li><a href="/diary/{{d[0]}}/{{m['mountNumber']}}/{{t['year']}}">{{d[0]}} | <span style="color: black;">{{d[1]}}</span></a></li>
 		%end #%for d in m['days']:
 		</ul>
 	  </li>

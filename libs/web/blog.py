@@ -93,7 +93,8 @@ def genTree():
             continue
         for m in months:
             tmpMonth = {}
-            tmpMonth['mountName'] = f'''{configuration.MONTH_NAMES[m[0]]} ({m[0] + 1})'''
+            tmpMonth['mountName'] = configuration.MONTH_NAMES[m[0] - 1]
+            tmpMonth['mountNumber'] = m[0]
             # sqlQueryObject = {}
             # sqlQueryObject['command'] = psevdoSQL.SELECT
             # sqlQueryObject['fileds'] = ['`day`']

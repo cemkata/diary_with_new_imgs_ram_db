@@ -1,7 +1,7 @@
 ###!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-ver = 3.05
+ver = 3.08
 projectName = "myDigital diary"
 
 import os

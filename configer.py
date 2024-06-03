@@ -60,7 +60,7 @@ class __Configer:
             self.log2File = False
             self._MEMFILE_MAX = 100
             self._uploadfolder = './uploads'
-            self._uploadfolder = './static_imgs'
+            self._imgsfolder = './static_imgs'
             self._SESSION_TTL = 604800
             self._session_port = 65432
             self._session_server = '127.0.0.1'
