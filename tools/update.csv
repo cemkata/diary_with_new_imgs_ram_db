@@ -20,7 +20,7 @@ libs/web/admin.py;be110b8ec99a73dc80d04c7e40305c3b
 libs/web/blog.py;4f1ff1215da83a9ecfb773a588779c0d
 libs/web/blog_files.py;4472748e53c3d52f5bea6095e82f9c8c
 libs/web/getWelcomeImg.py;c11fb674706ff4a0371a556e479d8f22
-libs/web/loginAndRegister.py;70b02642b7c773d95f3432198e13ac27
+libs/web/loginAndRegister.py;9ed8f8e76caac794c928eb0bf74b0bdb
 libs/web/self_help.py;8fc482f83b0c3f0055fb54cc2dc321dc
 libs/web/staticFiles.py;599216f35742813b0d9a2de025060d96
 libs/web/wysiwyg_editor.py;2aff2428395adde610e0990093b55614
@@ -119,12 +119,10 @@ ram_DB_Server.py;61bfcad39acc1ed09f4840a2b3d304ff
 ram_DB_SessionHandler.py;33393b63db2b3daeedf1fd7eeb555af6
 sessionFilesHandler.py;dae2d20f84a2247b4e9ca05d6e1f396b
 tools/adminUsersTool.py;820f6316d3ee1fdb038fc19fe565b09d
-tools/create_img.py;bbc345833f698b137e603d081310a3a2
+tools/create_img.py;fb1910aef32ef186ce40eab0e19f5c67
 tools/instaler.py;ea2ff07a473c55c31a4aaef06e7b6d52
-tools/placeholder.png;8152e98d3a5afad8e0b42edf9a1a001e
 tools/starter.sh;1318eb135656068e6f7e8803b519fb3d
-tools/update.csv;da68ff65f703ba835829d9b1af0e95e9
-tools/update1.csv;1b4cf4032317050851bbefcc4ab95552
+tools/update.csv;d312236c7bd739b77848b6cf9a2dbde3
 tools/updater.py;e6756cb6b8885303e2ae6637554e7127
 tools/uploadsMigration.py;e24497f6d4f15a69cc4bde2b5f1102a7
 views/admin_add_user.tpl;2090d4de8a10cb164e280c46741beda4

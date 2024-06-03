@@ -46,7 +46,9 @@ _img = "diary.zip"
 
 back_folder = os.getcwd()
 updateFilesList = os.path.join(back_folder, updateFilesList_name)
-os.chdir(install_path)
+#os.chdir(install_path)
+os.chdir("..")
+install_path = os.getcwd()
 
 skipFilesAndFolders = ["config_files", "__pycache__", _img]
 cnfgFile = os.path.join(os.path.abspath("./config_files/config.ini"))
@@ -65,12 +67,12 @@ if os.path.isfile(cnfgFile):
     skipFilesAndFolders.append(os.path.split(os.path.abspath(config['SESSIONS']['sessions_folder']))[1])
     skipFilesAndFolders.append(os.path.split(os.path.dirname((os.path.abspath(config['SESSIONS']['sessions_folder']))))[1])
 else:
-    skipFilesAndFolders.append(os.path.abspath('default.db'))
-    skipFilesAndFolders.append(os.path.abspath('.diary_users.db'))
-    skipFilesAndFolders.append(os.path.abspath('logs'))
-    skipFilesAndFolders.append(os.path.abspath('uploads'))
-    skipFilesAndFolders.append(os.path.abspath('static_imgs'))
-    skipFilesAndFolders.append(os.path.abspath('sessions'))
+    skipFilesAndFolders.append('default.db')
+    skipFilesAndFolders.append('.diary_users.db')
+    skipFilesAndFolders.append('logs')
+    skipFilesAndFolders.append('uploads')
+    skipFilesAndFolders.append('static_imgs')
+    skipFilesAndFolders.append('sessions')
 
 def walkThePath(path):
     filesList={}
@@ -98,8 +100,6 @@ def walkThePath(path):
                 filesList[key] = value
     return filesList
 
-
-
 def main():
     src_path = os.path.abspath(install_path)
     print("Scaning src folder: " + src_path)
@@ -120,16 +120,16 @@ def main():
         tmp_file = io.StringIO(empty_img_placeholder)
         f.write("static_imgs/placeholder.png"+";"+hashlib.md5(tmp_file.read().encode('utf-8')).hexdigest()+'\n')
     print("Compressiong: " + img_path)
-    ziph = zipfile.ZipFile(img_path, 'w', zipfile.ZIP_DEFLATED)
-    for file in installedFiles:
-        ziph.write(os.path.join(file), 
-                   os.path.relpath(file, 
-                                   os.path.join(src_path, '.')))
-    ziph.writestr("config_files/config.json", configfile_json)
-    ziph.writestr("config_files/config.ini", configfile_ini)
-    f_img_png = io.BytesIO(base64.b64decode(empty_img_placeholder))
-    ziph.writestr("static_imgs/placeholder.png", f_img_png.getvalue())
-    ziph.close()
+    with zipfile.ZipFile(img_path, 'w', zipfile.ZIP_DEFLATED) as ziph:
+        for file in installedFiles:
+            ziph.write(os.path.join(file), 
+                       os.path.relpath(file, 
+                                       os.path.join(src_path, '..')))
+        folder_head = os.path.split(src_path)
+        ziph.writestr(folder_head[1]+"/config_files/config.json", configfile_json)
+        ziph.writestr(folder_head[1]+"/config_files/config.ini", configfile_ini)
+        f_img_png = io.BytesIO(base64.b64decode(empty_img_placeholder))
+        ziph.writestr(folder_head[1]+"/static_imgs/placeholder.png", f_img_png.getvalue())
     print("=====>Done<=====")
     print("Output zip file: "+ img_path)
     print("Output csv file: "+ updateFilesList)
