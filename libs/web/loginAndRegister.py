@@ -4,7 +4,7 @@ import os
 import hashlib
 import html
 
-from bottle import Bottle, redirect, view, request, template
+from libs_extrn.bottle import Bottle, redirect, view, request, template
 
 from libs.database.DB_controler import create_connection, execute_sql_statment
 
@@ -67,44 +67,42 @@ def check_if_user_exist(uname):
     usr_db_conn = create_connection(configuration.db_users_path)
     userExist = execute_sql_statment(sql_str, SINGLE_ROW = True, conn = usr_db_conn)
     return 0 == userExist[0]
-        
+
 if not os.path.isfile(configuration.db_users_path):
     # create the users database
     # run server on port 7777 add only allow adding of new users
     @app.route('/')
     def index():
         redirect("/register")
-            
+
     conn = create_connection(configuration.db_users_path)
     with open(os.path.abspath('./db_schemas/db_schema_users.sql')) as db_sch:
         in_sql= db_sch.read()
-        from libs.database.DB_controler import create_connection
-        conn = create_connection(configuration.dbpath)
         with conn:
             cur = conn.cursor()
             cur.executescript(in_sql)
             conn.commit()
 
     _i_p_ = "0.0.0.0"
-    _p_o_r_t_ = 7777 
+    _p_o_r_t_ = 7777
     print(f"Please open in browser {_i_p_}:{_p_o_r_t_} and create a user.")
     print("After this restart the application")
-    
-    from bottle import Bottle, route, run, redirect
+
+    from libs_extrn.bottle import Bottle, route, run, redirect
     run(app, host = _i_p_, port = _p_o_r_t_, debug=True)
     exit()
-        
+
 @app.route('/login', method='POST')
 def do_login(session):
     userName = html.escape(request.forms.user_name.strip())
     password = html.escape(request.forms.user_password.strip())
     csrf = request.forms.get('csrf_token')
-        
+
     if session['csrf']!=csrf:
         new_csrf = ''.join(random.choice(string.ascii_uppercase+string.ascii_lowercase+string.digits) for x in range(32))
         context = {'csrf_token': new_csrf, 'error': 'Cross-site scripting error.'}
         return template('lgn_login', **context)
-        
+
     sql_str = f'''SELECT `salt`, `passchecksum` FROM `users_tbl` WHERE `user_name` = "{userName}";'''
     conn = create_connection(configuration.db_users_path)
     usr_db_conn = create_connection(configuration.db_users_path)
@@ -118,7 +116,7 @@ def do_login(session):
             loginFlag = True
         else:
             loginFlag = False
-    
+
     if loginFlag:
         session['name'] = html.unescape(userName)
         session['login_true'] = str(1)
@@ -153,7 +151,7 @@ def do_change_page(session):
                  'action' : "Change"
                  }
     return template('lgn_register', **form_dict)
-    
+
 @app.route('/change', method='POST')
 def do_change(session):
     first_name = html.escape(request.forms.get('first_name'))

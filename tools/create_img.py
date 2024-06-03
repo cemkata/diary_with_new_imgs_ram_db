@@ -124,12 +124,11 @@ def main():
     for file in installedFiles:
         ziph.write(os.path.join(file), 
                    os.path.relpath(file, 
-                                   os.path.join(src_path, '..')))
-    folder_head = os.path.split(src_path)
-    ziph.writestr(folder_head[1]+"/config_files/config.json", configfile_json)
-    ziph.writestr(folder_head[1]+"/config_files/config.ini", configfile_ini)
+                                   os.path.join(src_path, '.')))
+    ziph.writestr("config_files/config.json", configfile_json)
+    ziph.writestr("config_files/config.ini", configfile_ini)
     f_img_png = io.BytesIO(base64.b64decode(empty_img_placeholder))
-    ziph.writestr(folder_head[1]+"/static_imgs/placeholder.png", f_img_png.getvalue())
+    ziph.writestr("static_imgs/placeholder.png", f_img_png.getvalue())
     ziph.close()
     print("=====>Done<=====")
     print("Output zip file: "+ img_path)
